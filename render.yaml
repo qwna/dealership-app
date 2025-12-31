@@ -1,0 +1,15 @@
+﻿cat > render.yaml << 'EOF'
+services:
+  - type: web
+    name: dealership
+    env: dotnet
+    buildCommand: dotnet publish -c Release -o output
+    startCommand: dotnet Dealership.dll
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: DOTNET_CLI_TELEMETRY_OPTOUT
+        value: 1
+    healthCheckPath: /
+    autoDeploy: true
+EOF

@@ -1,0 +1,141 @@
+﻿@page
+@model Dealership.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "CHERY LOGIN";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHERY LOGIN</title>
+    <style>
+        /* ВСТАВЬТЕ ВЕСЬ CSS ИЗ ВАШЕГО dealer_login.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #FCEBD0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-container {
+            max-width: 400px;
+            width: 100%;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: #1D3B28;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #1D3B28;
+            margin-bottom: 20px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1D3B28;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #B1BACA;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+            input:focus {
+                outline: none;
+                border-color: #D2C1A6;
+            }
+
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background-color: #726E6A;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            .btn-login:hover {
+                background-color: #D2C1A6;
+            }
+
+        .register-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+        }
+
+            .register-link a {
+                color: #3498db;
+                text-decoration: none;
+            }
+
+                .register-link a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">CHERY</div>
+        <h2>Log in</h2>
+
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="alert">@Model.ErrorMessage</div>
+        }
+
+        <form method="post">
+            <div class="form-group">
+                <label for="dealerCode">Dealer Code</label>
+                <input type="text" id="dealerCode" name="dealerCode"
+                       required placeholder="Dealer Code" value="@Model.DealerCode">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password"
+                       required placeholder="Password">
+            </div>
+
+            <button type="submit" class="btn-login">Submit</button>
+        </form>
+
+        <div class="register-link">
+            Don't have an account? <a href="/Account/Register">Sign up</a>
+        </div>
+    </div>
+</body>
+</html>
